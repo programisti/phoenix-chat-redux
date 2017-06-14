@@ -1,5 +1,5 @@
 defmodule Kodala.Desk do
-  alias Kodala.Desk.Chat
+  alias Kodala.{ Repo, Desk.Chat }
 
   def list_chats do
     Repo.all(Chat)
@@ -10,7 +10,7 @@ defmodule Kodala.Desk do
   def create_chat(attrs \\ %{}) do
     %Chat{}
     |> Chat.changeset(attrs)
-    |> Repo.insert()
+    |> Repo.insert!()
   end
 
   def update_chat(%Chat{} = chat, attrs) do

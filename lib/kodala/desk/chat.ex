@@ -7,6 +7,7 @@ defmodule Kodala.Desk.Chat do
   schema "chats" do
     field :room, :string
     field :status, :string
+    field :client_name, :string
 
     timestamps()
   end
@@ -14,7 +15,7 @@ defmodule Kodala.Desk.Chat do
   @doc false
   def changeset(%Chat{} = chat, attrs) do
     chat
-    |> cast(attrs, [:room, :status])
-    |> validate_required([:room, :status])
+    |> cast(attrs, [:room, :status, :client_name])
+    |> validate_required([:room, :status, :client_name])
   end
 end

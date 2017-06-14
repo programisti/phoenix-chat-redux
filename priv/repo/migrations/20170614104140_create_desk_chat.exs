@@ -5,6 +5,7 @@ defmodule Kodala.Repo.Migrations.CreateKodala.Desk.Chat do
     create table(:chats) do
       add :room, :string
       add :status, :string
+      add :client_name, :string
 
       timestamps()
     end

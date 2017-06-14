@@ -19,8 +19,10 @@ defmodule Kodala.Web.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(_params, socket) do
-    IO.inspect socket
+  def connect(params, socket) do
+    socket = socket
+    |> assign(:name, params["name"])
+    |> assign(:type, params["type"])
     {:ok, socket}
   end
 
