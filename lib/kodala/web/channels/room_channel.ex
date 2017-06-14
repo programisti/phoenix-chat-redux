@@ -2,10 +2,28 @@ defmodule Kodala.Web.RoomChannel do
   use Kodala.Web, :channel
   require Logger
 
-  def join("rooms:lobby", message, socket) do
+  def join("rooms:" <> room, message, socket) do
     Process.flag(:trap_exit, true)
-    :timer.send_interval(5000, :ping)
+    # :timer.send_interval(5000, :ping)
+    IO.inspect room
+    # IO.inspect socket
     send(self, {:after_join, message})
+    # case msg do
+    #   %{"type" => "client", "name" => client, "ip" => ip} ->
+    #     chat = Desk.create_chat(%{client: client, room: room})
+    #     auth = %{type: "client", name: client, chat: chat}
+    #     socket = assign(socket, :auth, auth)
+    #     send(self, {:client_joined, chat})
+    #   %{"type" => "agent", "name" => agent} ->
+    #     auth = %{type: "agent", name: agent, room: room}
+    #     socket = assign(socket, :auth, auth)
+    #     send(self, {:agent_joined, auth})
+    #   %{type: "system", name: "system", chat: chat} ->
+    #     socket = assign(socket, :auth, msg)
+    #   _ ->
+    #     auth = %{ type: "anon", name: "anon"}
+    #     socket = assign(socket, :auth, auth)
+    # end
 
     {:ok, socket}
   end

@@ -20,6 +20,7 @@ defmodule Kodala.Web.UserSocket do
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
   def connect(_params, socket) do
+    IO.inspect socket
     {:ok, socket}
   end
 
@@ -33,5 +34,5 @@ defmodule Kodala.Web.UserSocket do
   #     Kodala.Web.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
-  def id(_socket), do: nil
+  def id(socket), do: nil
 end
